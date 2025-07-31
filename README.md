@@ -25,17 +25,6 @@ Planistry was developed with the goal of simplifying time management for student
 Visit the live website here:  
 [🔗 https://yourusername.github.io/planistry-site](https://taru123-eng.github.io/planistry-site)  
 
-
-## 📁 Project Structure
-planistry-site/
-├── index.html # Landing page
-├── timetable.html # Timetable generator (manual and AI)
-├── checker.html # Task checker
-├── timer.html # Pomodoro timer
-├── about.html # About section
-├── assets/ # CSS, JavaScript, and media files
-└── README.md # Project documentation
-
 ## 🛠️ Tech Stack
 
 - **HTML5**, **CSS3**, **JavaScript**
