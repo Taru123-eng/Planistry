@@ -1,0 +1,420 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+    <title>AI Timetable</title>
+    <link rel="icon" type="image/png" href="P.png" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Walter+Turncoat&display=swap"
+      rel="stylesheet"
+      
+    />
+    <style>
+    body {
+        background-color: #f0efed;
+    }
+    .navbar .vr {
+        height: 50px;
+        border-left: 3px solid #00000088; /* subtle black */
+        align-self: center;
+    }
+    .homemade-apple-regular {
+        font-family: "Homemade Apple", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 30px;
+    }
+      .walter-turncoat-regular {
+      font-family: "Walter Turncoat", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .form-preview-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .timetable-container {
+      width: 100%;
+      max-width: 1200px;
+      min-height: 70vh;
+      background-color: #f8dada;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px;
+    }
+    .timetable-title {
+      color: #333;
+      font-size: clamp(2rem, 5vw, 3.125rem);
+    }
+    .navbar .vr {
+        height: 30px;
+        border-left: 3px solid white; /* subtle black */
+        align-self: center;
+        opacity:1;
+        margin-top: 10px;
+        
+      }
+    .task-prompt {
+      margin-top: 50px;
+      margin-left: 50px;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+    .task-input {
+      margin-top: -55px;
+      margin-left: 280px;
+      height: 50px;
+      min-width: 250px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: "Walter Turncoat", cursive;
+      font-size: 1rem;
+    }
+    .add-task-button {
+      margin-top: 30px;
+      margin-left: 50px;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Walter Turncoat", cursive;
+    }
+    .add-task-button:hover {
+      background-color: #555;
+    }
+
+    </style>
+
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg" style="background-color: black !important; padding-bottom:20px; padding-top:20px;">
+          <div class="container-fluid">
+            <a class="navbar-brand homemade-apple-regular mt-3" href="#" style="font-size: 50px;color:white">Planistry</a>
+            <button
+              class="navbar-toggler"
+              style="background-color: white"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+             >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+              <ul class="navbar-nav mb-2 mb-lg-0 mt-3">
+                <li class="nav-item">
+                  <a class="nav-link walter-turncoat-regular" href="index.html" style="font-size: 25px;color:white">Home</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                  <span class="vr mx-3"></span>
+                </li>
+      
+              
+              
+                <li class="nav-item">
+                  <a class="nav-link walter-turncoat-regular" href="timetable.html" style="font-size:25px;color:white">TimeTable Generator</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                  <span class="vr mx-3"></span>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link walter-turncoat-regular" href="checker.html" style="font-size:25px;color:white">Task Checker</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                  <span class="vr mx-3"></span>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link walter-turncoat-regular" href="timer.html" style="font-size:25px;color:white">Time and Focus</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                  <span class="vr mx-3"></span>
+                </li>
+                <li class="nav-item">
+                  <li class="nav-item">
+                      <a class="nav-link walter-turncoat-regular" href="about.html" style="font-size: 25px;color:white">About</a>
+                    </li>
+      
+      
+      
+      
+                 
+      
+      
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+    <div class="container">
+     
+        <h1 class="walter-turncoat-regular" style="text-align: center; margin-top: 10px;">AI Timetable Maker</h1>
+       
+    </div>
+    <div class="container" style="max-width:90%; padding-left: 20px; background-color: rgb(190, 189, 189); border-radius: 15px;">
+     <ol>
+     <li style="font-size: 23px;"><p class="walter-turncoat-regular" style="text-align: left; font-size: 27px;">Enter Task Here: </p></li>
+     <input class="walter-turncoat-regular" type="text" placeholder="Task" id="task-in">
+     <hr>
+     <li style="font-size: 23px;"><p class="walter-turncoat-regular" style="text-align: left; font-size: 27px;">What type of task is it?</p></li>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Work">  Work related task</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Study">  Study / Courses / Upskilling</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Meet">  Meetings & Appointments</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Workout">  Workout</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Household">  Household Task</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Creative">  Creative Task</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;" ><input type="checkbox" class="task-type" style="accent-color: pink;" value="Fam">  Social/Family Task</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="task-type" style="accent-color: pink;" value="meditation">  Meditation</label><br><br>
+     
+     <label class="walter-turncoat-regular" style="font-size: 20px;">Other:
+        <input type="text" id="other">
+    </label><br><br> 
+    <label class="walter-turncoat-regular" style="font-size: 24px;"><input type="checkbox" class="task-type" style="accent-color: pink;" value="noSpecify"> I don't want to specify</label><br>
+    <hr>
+    <li style="font-size: 23px;"><p class="walter-turncoat-regular" style="text-align: left; font-size: 27px;">What are your time preferences?</p></li>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="time-pref" style="accent-color: pink;" value="earlymorn">  Early Bird (5 AM – 9 AM)</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="time-pref" style="accent-color: pink;" value="morn">  Morning (9 AM – 12 PM)</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="time-pref" style="accent-color: pink;" value="noon">  Afternoon (12 PM – 4 PM)</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="time-pref" style="accent-color: pink;" value="evening">  Evening (4 PM – 8 PM)</label><br>
+     <label class="walter-turncoat-regular" style="font-size: 22px;"><input type="checkbox" class="time-pref" style="accent-color: pink;" value="night">  Night Owl (8 PM – Midnight)</label><br><br>
+     <p class="walter-turncoat-regular" style="font-size: 25px;">Specific Timing:</p>
+     <ul>
+        <li><label  class="walter-turncoat-regular" style="font-size: 21px;">Start:
+        <input type="time" class="walter-turncoat-regular" id="starttime"></li><br>
+        <li><label  class="walter-turncoat-regular" style="font-size: 21px;">Stop:  
+            <input type="time" class="walter-turncoat-regular" id="stoptime"></li>
+
+    </ul>
+        
+
+     </label><br><br>
+     <label class="walter-turncoat-regular" style="font-size: 23px;"><input type="checkbox" style="accent-color: pink;" class="time-pref" value="anytime">  Whenever AI says, I obey</label><br>
+     <hr>
+     <li style="font-size: 23px;"><p class="walter-turncoat-regular" style="text-align: left; font-size: 27px;">What is the duration of your task?</p></li><br>
+    <ul>
+     <li><label class="walter-turncoat-regular" style="font-size: 20px;">No. of hours:
+        <input type="text" id="duration-hours">
+     </label></li><br><br>
+     <li><label class="walter-turncoat-regular" style="font-size: 20px;">No. of minutes:
+        <input type="text" id="duration-minutes">
+     </label></li><br>
+    </ul>
+    
+    
+
+
+
+    
+    </ol>
+    <hr>
+    <button id="add-task-btn" class="add-task-button">Add Task</button>
+    <button id="generate-btn" class="add-task-button">Generate Timetable</button>
+    <button id="pdf-btn" class="add-task-button">Generate PDF</button>
+    <hr>
+    <div class="container" style="background-color: white; border-radius: 5x; padding-bottom: 10px;"><p id="response" class="walter-turncoat-regular" style="text-align: center;">View Your TimeTable Here</p></div>
+
+    </div>
+    
+
+
+
+    <script>
+      localStorage.removeItem("timetableTasks");
+
+    
+      const taskList = [];
+  
+      // --- Event Listener for the "Add Task" Button ---
+      document.getElementById('add-task-btn').addEventListener('click', () => {
+          const taskName = document.getElementById('task-in').value;
+          
+          // Prevent adding empty tasks
+          if (!taskName) {
+              alert('Please enter a task name.');
+              return;
+          }
+  
+          const taskTypes = Array.from(document.querySelectorAll('.task-type:checked')).map(el => el.value);
+          const timePref = Array.from(document.querySelectorAll('.time-pref:checked')).map(el => el.value);
+          const startTime = document.getElementById('starttime').value;
+          const stopTime = document.getElementById('stoptime').value;
+          const durationHours = document.getElementById('duration-hours').value;
+          const durationMinutes = document.getElementById('duration-minutes').value;
+  
+          const taskData = {
+              name: taskName,
+              types: taskTypes,
+              timePreferences: timePref,
+              specificTime: { start: startTime, stop: stopTime },
+              duration: { hours: durationHours, minutes: durationMinutes }
+          };
+          
+          taskList.push(taskData);
+          alert(`Task "${taskName}" has been added!`);
+  
+          // --- Clear the form for the next task entry ---
+          document.getElementById('task-in').value = '';
+          document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+          document.getElementById('starttime').value = '';
+          document.getElementById('stoptime').value = '';
+          document.getElementById('duration-hours').value = '';
+          document.getElementById('duration-minutes').value = '';
+          document.getElementById('other').value = '';
+      });
+  
+      // --- Event Listener for the "Generate Timetable" Button ---
+      document.getElementById('generate-btn').addEventListener('click', generateWithAI);
+  
+      async function generateWithAI() {
+          if (taskList.length === 0) {
+              alert("Please add at least one task before generating a timetable.");
+              return;
+          }
+  
+          // ⚠️ WARNING: Your API key is exposed here. See security note below.
+          const apiKey = "AIzaSyBajGa89W5CJOGwLfYQUkSqw6B505KGRiA"; 
+          const prompt = `
+           You are an AI assistant named Planistry. Using the task data provided below in JSON, generate a **fun, productive daily timetable** in **HTML table format** (not Markdown).
+
+          Instructions:
+          0. Please do NOT using emojis or special characters. Use plain text only.
+          1. Use only the task data. Do NOT invent or add any tasks.
+          2. If only one task is provided:
+          - Break it into smaller, logical subtasks or time blocks.
+          - Add breaks in between where appropriate.
+          3. If multiple tasks are present:
+          - Arrange them efficiently based on time preferences and specific times.
+          - Balance tasks throughout the day.
+          4. Output a **well-formatted HTML table** with:
+          - Black borders around all cells
+          - Table headers like: Time, Task, Notes
+          - Clean, readable layout that can be styled easily
+          5. Keep the tone fun and user-friendly 
+           
+
+          Here is the task data:
+          ${JSON.stringify(taskList, null, 2)}
+          `;
+
+
+          
+          document.getElementById("response").innerText = "Planistry is thinking... ";
+  
+          try {
+              const response = await fetch(
+                  `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
+                  {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                  }
+              );
+              
+              if (!response.ok) {
+                   throw new Error(`API Error: ${response.statusText}`);
+              }
+  
+              const data = await response.json();
+              const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Oops! No response from AI.";
+              let cleanedHTML=aiText
+              .replace(/```html\s*/gi, '')
+              .replace(/```/g, '');
+              
+              document.getElementById("response").innerHTML = cleanedHTML
+              const parsedTasks=parseHTMLTableToTasks(cleanedHTML);
+              localStorage.setItem("timetableTasks", JSON.stringify(parsedTasks));
+
+
+
+              
+
+            
+
+
+    
+              
+  
+          } catch (error) {
+              console.error("Error calling AI:", error);
+              document.getElementById("response").innerText = "Sorry, something went wrong. Please check the console for errors.";
+          }
+      }
+      document.getElementById('pdf-btn').addEventListener('click', () => {
+              const {jsPDF} = window.jspdf;
+              const doc = new jsPDF();
+              doc.text("My Timetable", 10, 10);
+              const tableElement = document.querySelector('#response table');
+              if (tableElement) {
+                doc.autoTable({ html: tableElement });
+                doc.save("timetable.pdf");
+              } else {
+                alert("No table found to export.");
+              }
+            });
+            function parseHTMLTableToTasks(html) {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const rows = doc.querySelectorAll('table tr');
+
+              const tasks = [];
+              rows.forEach((row, index) => {
+                 if (index === 0) return; // Skip header
+
+                 const cells = row.querySelectorAll('td');
+                 if (cells.length >= 3) {
+                  const time = cells[0].textContent.trim();
+                  const task = cells[1].textContent.trim();
+                  const notes = cells[2].textContent.trim();
+
+                  const [start, end] = time.split(/\s*[-–]\s*/); // split by dash
+                  tasks.push({
+                  task,
+                  start: start || '',
+                  end: end || '',
+                  notes,
+                  done: false
+               });
+            }
+          });
+
+         return tasks;
+       }
+
+  </script>
+
+      
+       <script
+       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+       ></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+
+    
+    
+
+    
+  
+        
+
+  </body>
+</html>
