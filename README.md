@@ -24,6 +24,8 @@ Planistry was developed with the goal of simplifying time management for student
 
 Visit the live website here:  
 [🔗 https://planistry.netlify.app/](https://planistry.netlify.app/)  
+> **Note:** Planistry is optimized for **Google Chrome**. Certain functions may not display or calculate correctly on other browsers.
+
 
 ## 🛠️ Tech Stack
 
