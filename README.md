@@ -28,7 +28,7 @@ Visit the live website here:
 ## 🛠️ Tech Stack
 
 - **HTML5**, **CSS3**, **JavaScript**
-- **Lightweight AI logic** (custom-built)
+- **Gemini AI Integration** 
 
 ## License
 
