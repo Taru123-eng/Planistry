@@ -33,7 +33,7 @@
         
      .navbar .vr {
         height: 30px;
-        border-left: 3px solid white; /* subtle black */
+        border-left: 3px solid white; 
         align-self: center;
         opacity:1;
         margin-top: 10px;
@@ -70,23 +70,23 @@
       background-color: #555;
     }
     
-         /* Super Focused Mobile Enhancements */
+         
          @media (max-width: 992px) {
-        /* Timer adjustments */
+        
         #timer {
             font-size: min(20vw, 70px) !important;
             top: 45% !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        /* Image container */
+        
         .box {
             height: 500px;
             border-radius: 70px;
             margin-top: 50px;
         }
         
-        /* Buttons */
+        
         .add-task-button {
             position: relative !important;
             display: block !important;
@@ -166,7 +166,7 @@
         }
      }
      
-     /* Image optimization */
+     
      .box img {
         object-fit: contain;
         max-height: 100% !important;
@@ -175,7 +175,7 @@
         display: block;
      }
      
-     /* Button container positioning */
+     
      .position-relative {
         display: flex;
         flex-direction: column;
@@ -252,7 +252,7 @@
             <div class="position-relative" style="max-width: 100%;">
                 <img src="ear.png" class="img-fluid" style="max-height: 600px; width: 100%; height: auto;">
                 
-                <!-- Timer centered over the image -->
+                
                 <div id="timer" 
                      class="position-absolute top-50 start-50 translate-middle" 
                      style="font-size: min(15vw, 90px); color: black; white-space: nowrap;">
@@ -267,7 +267,7 @@
 
         <script>
             let timer;
-            let timeLeft = 25 * 60; // 25 minutes
+            let timeLeft = 25 * 60; 
             let isRunning = false;
 
             function updateDisplay() {
@@ -304,7 +304,7 @@
              updateDisplay();
          }
 
-// Initialize display
+
          updateDisplay();
 
         </script>
