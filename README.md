@@ -23,7 +23,7 @@ Planistry was developed with the goal of simplifying time management for student
 ##  Live Demo
 
 Visit the live website here:  
-[🔗 https://planistry.netlify.app/](https://taru123-eng.github.io/planistry-site)  
+[🔗 https://planistry.netlify.app/](https://planistry.netlify.app/)  
 
 ## 🛠️ Tech Stack
 
